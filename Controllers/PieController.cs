@@ -23,5 +23,15 @@ namespace PieShop.Controllers
             piesListViewModel.CurrentCategory = "Chesse cake";
             return View(piesListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var pie = _pieRepozitory.GetPieById(id);
+            if(pie == null)
+            {
+                return NotFound();
+            }
+            return View(pie);
+        }
     }
 }
